@@ -1,46 +1,43 @@
 import React from 'react';
-import './button.css';
 
 interface ButtonProps {
   /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
+   * ボタンに表示されるテキスト
    */
   label: string;
   /**
-   * Optional click handler
+   * ボタンの背景色
    */
-  onClick?: () => void;
+  color?: string;
+  /**
+   * ボタンをクリックした時の処理
+   */
+  onClick: () => void;
 }
 
 /**
- * Primary UI component for user interaction
+ * シンプルなボタンコンポーネント
  */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
+export const Button: React.FC<ButtonProps> = ({
   label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  color = "#1ea7fd",
+  onClick,
+}) => {
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
+      style={{
+        fontSize: "14px",
+        padding: "8px 16px",
+        border: "none",
+        borderRadius: "3em",
+        cursor: "pointer",
+        display: "inline-block",
+        lineHeight: 1,
+        color: 'white',
+        backgroundColor: color,
+      }}
+      onClick={onClick}
     >
       {label}
     </button>

@@ -1,5 +1,4 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -14,12 +13,8 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: "tag",
-  },
-  async viteFinal(config) {
-    return mergeConfig(config, {
-      base: 'https://ideal-tribble-rpwv5j9j9r4c57v9-6006.app.github.de',
-    });
+    // 👇 ここを追記
+    autodocs: true,
   },
 };
 export default config;
